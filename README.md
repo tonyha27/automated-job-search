@@ -26,6 +26,8 @@ The spreadsheet uses 8 columns to store job information. For the sake of complet
 
 The spreadsheet also uses conditional colour formatting for the Score and Status columns for ease of use. 
 
+Both the workflow and sheet has been provided in this repo.
+
 # Limitations
 - Use of n8n cloud requires a monthly subscription (running it locally is free however)
 - Using the job scrapers require Apify credits, and if the amount used exceeds the free limit, payment will be required to top it up

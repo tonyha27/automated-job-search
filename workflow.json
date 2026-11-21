@@ -1,0 +1,1085 @@
+{
+  "name": "workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "actorId": {
+          "__rl": true,
+          "value": "5BAoYcBhwvPuMtd0K",
+          "mode": "list",
+          "cachedResultName": "SEEK Job Scraper — Australia & New Zealand Job Listings (blackfalcondata/seek-scraper)",
+          "cachedResultUrl": "https://console.apify.com/actors/5BAoYcBhwvPuMtd0K/input"
+        },
+        "customBody": "={\n  \"compact\": false,\n  \"country\": \"AU\",\n  \"descriptionFormat\": \"all\",\n  \"emitExpired\": false,\n  \"emitUnchanged\": false,\n  \"excludeEmptyFields\": false,\n  \"includeApplicantInsights\": false,\n  \"includeDetails\": true,\n  \"includeRunSummary\": true,\n  \"incrementalMode\": false,\n  \"keywordMatchBulletPoints\": false,\n  \"keywordMatchCategory\": false,\n  \"keywordMatchCompany\": false,\n  \"keywordMatchDescription\": false,\n  \"keywordMatchTitle\": false,\n  \"location\": \"Perth\",\n  \"maxResults\": 3,\n  \"notifyOnlyChanges\": false,\n  \"query\": \"{{ $json.keyword }}\",\n  \"skipReposts\": false,\n  \"sortMode\": \"relevance\",\n  \"requireContact\": \"off\",\n  \"descriptionMaxLength\": 0,\n  \"notificationLimit\": 5,\n  \"maxPages\": 25\n} ",
+        "timeout": {},
+        "memory": 256
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        736,
+        0
+      ],
+      "id": "50bc80a9-9de7-46f5-a1fe-70e311a5b83a",
+      "name": "Scrape Jobs - SEEK",
+      "credentials": {
+        "apifyApi": {
+          "id": "SASWNsykfiGCTkE0",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "actorId": {
+          "__rl": true,
+          "value": "5qEdzhDExT2pcv7Cf",
+          "mode": "list",
+          "cachedResultName": "Careerone Jobs Search Scraper (stealth_mode/careerone-jobs-search-scraper)",
+          "cachedResultUrl": "https://console.apify.com/actors/5qEdzhDExT2pcv7Cf/input"
+        },
+        "customBody": "={\n    \"ignore_url_failures\": true,\n    \"max_items_per_url\": 3,\n    \"proxy\": {\n        \"useApifyProxy\": true,\n        \"apifyProxyGroups\": [\n            \"RESIDENTIAL\"\n        ],\n        \"apifyProxyCountry\": \"AU\"\n    },\n    \"urls\": [\n        \"https://www.careerone.com.au/{{ $json.keyword }}-jobs/in-perth-wa\"\n    ]\n}",
+        "timeout": {},
+        "memory": 2048
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        736,
+        192
+      ],
+      "id": "6bb8e7fe-7db1-4151-b377-48fac75d0223",
+      "name": "Scrape Jobs - CareerOne",
+      "credentials": {
+        "apifyApi": {
+          "id": "SASWNsykfiGCTkE0",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "actorId": {
+          "__rl": true,
+          "value": "sLIjkF7jpMseBsAz5",
+          "mode": "list",
+          "cachedResultName": "Jora Jobs Scraper — APAC Salaries, Company & Details (scrapersdelight/jora-jobs-scraper)",
+          "cachedResultUrl": "https://console.apify.com/actors/sLIjkF7jpMseBsAz5/input"
+        },
+        "customBody": "={\n    \"country\": \"au\",\n    \"diagnose\": false,\n    \"fetchDetails\": false,\n    \"keywords\": \"{{ $json.keyword }}\",\n    \"location\": \"Perth\",\n    \"maxItems\": 3,\n    \"postedWithin\": \"any\"\n}",
+        "timeout": {},
+        "memory": 256
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        736,
+        384
+      ],
+      "id": "d0df36d8-ab86-4cb4-9bdc-a14f49b574db",
+      "name": "Scrape Jobs - Jora",
+      "credentials": {
+        "apifyApi": {
+          "id": "SASWNsykfiGCTkE0",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "actorId": {
+          "__rl": true,
+          "value": "MXLpngmVpE8WTESQr",
+          "mode": "list",
+          "cachedResultName": "🚀 Indeed jobs scraper [PPR] (borderline/indeed-scraper)",
+          "cachedResultUrl": "https://console.apify.com/actors/MXLpngmVpE8WTESQr/input"
+        },
+        "customBody": "={\n    \"country\": \"au\",\n    \"enableUniqueJobs\": false,\n    \"includeSimilarJobs\": false,\n    \"location\": \"Perth\",\n    \"maxRows\": 3,\n    \"query\": \"{{ $json.keyword }}\"\n}",
+        "timeout": {},
+        "memory": 512
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        736,
+        576
+      ],
+      "id": "404b2e21-5d49-4db9-9c71-71f7a40e58b8",
+      "name": "Scrape Jobs - Indeed",
+      "credentials": {
+        "apifyApi": {
+          "id": "SASWNsykfiGCTkE0",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        464
+      ],
+      "id": "5fc37200-90fc-476e-b980-2007123e2dd0",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cff084f9-ec7e-431f-ada4-5747dbe13190",
+              "name": "Title",
+              "value": "={{ $json.job_title.trim().toUpperCase() }}",
+              "type": "string"
+            },
+            {
+              "id": "305ced74-f3f0-4558-8275-2dd89c137adb",
+              "name": "Company",
+              "value": "={{ $json.company_name.trim().toUpperCase() }}",
+              "type": "string"
+            },
+            {
+              "id": "a26395a3-aea8-4fb9-8131-c27a5c50237b",
+              "name": "Description",
+              "value": "={{ $json.job_description }}",
+              "type": "string"
+            },
+            {
+              "id": "f7db54b7-3ffd-4da7-b970-fd42bf7e8188",
+              "name": "Link",
+              "value": "=https://www.careerone.com.au/jobs/in-perth-wa",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1184,
+        192
+      ],
+      "id": "7f947996-edf6-4c4a-bb2f-6255b73567c8",
+      "name": "Edit Fields - CareerOne"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cff084f9-ec7e-431f-ada4-5747dbe13190",
+              "name": "Title",
+              "value": "={{ $json.title.trim().toUpperCase() }}",
+              "type": "string"
+            },
+            {
+              "id": "305ced74-f3f0-4558-8275-2dd89c137adb",
+              "name": "Company",
+              "value": "={{ $json.company.trim().toUpperCase() }}",
+              "type": "string"
+            },
+            {
+              "id": "a26395a3-aea8-4fb9-8131-c27a5c50237b",
+              "name": "Description",
+              "value": "={{ $json.description_text }}",
+              "type": "string"
+            },
+            {
+              "id": "f7db54b7-3ffd-4da7-b970-fd42bf7e8188",
+              "name": "Link",
+              "value": "={{ $json.job_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1184,
+        384
+      ],
+      "id": "f02fa200-385c-407d-a77c-2acd0bc4f99d",
+      "name": "Edit Fields - Jora"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cff084f9-ec7e-431f-ada4-5747dbe13190",
+              "name": "Title",
+              "value": "={{ $json.title.trim().toUpperCase() }}",
+              "type": "string"
+            },
+            {
+              "id": "305ced74-f3f0-4558-8275-2dd89c137adb",
+              "name": "Company",
+              "value": "={{ $json.companyName.trim().toUpperCase() }}",
+              "type": "string"
+            },
+            {
+              "id": "a26395a3-aea8-4fb9-8131-c27a5c50237b",
+              "name": "Description",
+              "value": "={{ $json.descriptionText }}",
+              "type": "string"
+            },
+            {
+              "id": "f7db54b7-3ffd-4da7-b970-fd42bf7e8188",
+              "name": "Link",
+              "value": "={{ $json.jobUrl }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1184,
+        576
+      ],
+      "id": "77765c7d-3b6b-479b-96af-04011f2e00b9",
+      "name": "Edit Fields - Indeed"
+    },
+    {
+      "parameters": {
+        "compare": "selectedFields",
+        "fieldsToCompare": "Title, Company",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 2,
+      "position": [
+        1856,
+        384
+      ],
+      "id": "3af42885-feef-46a9-9417-04331982e7d4",
+      "name": "Remove In-Batch Duplicates"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "Title, Company",
+        "joinMode": "keepNonMatches",
+        "outputDataFrom": "input1",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2304,
+        384
+      ],
+      "id": "08fdb073-19cf-430e-9ac5-0d230185a936",
+      "name": "Remove Duplicates"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Here is the job listing:\n\n{{ $json.Description }}\n\nHere is the candidate's resume:\n\n[INCLUDE RESUME HERE]"
+            }
+          ]
+        },
+        "options": {
+          "includeMergedResponse": true,
+          "system": "You are an intelligent bot assessing how well a candidate is fit for the role by comparing their resume to the job listing. Please rate their suitability for the job with a score out of 10. Do NOT give the reasoning, I only want the score. Focus only on whether the candidate can do the job, not on features of the job such as benefits, salary, location, etc. Return ONLY valid JSON in this exact format: {\"score\": 7}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.anthropic",
+      "typeVersion": 1,
+      "position": [
+        2528,
+        384
+      ],
+      "id": "af88550e-e27e-4ef8-b912-d12fcb48c03e",
+      "name": "Score Jobs"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const response = $json.merged_response;\nconst cleaned = response.replace(/^```json\\s*/, '').replace(/\\s*```$/, '');\nconst parsed = JSON.parse(cleaned);\nreturn { score: parsed.score};"
+      },
+      "id": "93274ec9-c2ad-4545-a4f3-c19e558d81ed",
+      "name": "Parse Scores",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2880,
+        384
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "id": "b106b98a-d64f-4aa5-bd2e-98f42e16e9a4",
+      "name": "Read Jobs in Google Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2080,
+        528
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "VVqInoJGey2NtOpe",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=http://api.adzuna.com/v1/api/jobs/au/search/1",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "app_id"
+            },
+            {
+              "name": "app_key"
+            },
+            {
+              "name": "results_per_page",
+              "value": "3"
+            },
+            {
+              "name": "what_or",
+              "value": "={{ $json.keyword }}"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            },
+            {
+              "name": "sort_by",
+              "value": "relevance"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        736,
+        768
+      ],
+      "id": "4b7d9663-5ac0-4352-b48c-2de9fb88645d",
+      "name": "HTTP Request - Adzuna"
+    },
+    {
+      "parameters": {
+        "language": "pythonNative",
+        "pythonCode": "keywords = [\"warehouse\", \"data scientist\"]\n\nreturn [\n    {\"json\": {\"keyword\": word}}\n    for word in keywords\n]"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        464
+      ],
+      "id": "03d54d88-b1dc-4ed5-b368-2600e493943f",
+      "name": "Input Keywords"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        448,
+        464
+      ],
+      "id": "2a389175-5221-4271-b6b0-4e8ce5bc2753",
+      "name": "Loop over Keywords"
+    },
+    {
+      "parameters": {
+        "resource": "Datasets",
+        "datasetId": "={{ $json.defaultDatasetId }}",
+        "offset": {},
+        "limit": 100,
+        "options": {}
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        960,
+        0
+      ],
+      "id": "b68b47f5-9366-47d8-b851-93515bdc98f6",
+      "name": "Split Out - SEEK",
+      "credentials": {
+        "apifyApi": {
+          "id": "SASWNsykfiGCTkE0",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "Datasets",
+        "datasetId": "={{ $json.defaultDatasetId }}",
+        "offset": {},
+        "limit": 100,
+        "options": {}
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        960,
+        192
+      ],
+      "id": "fd1e035b-8f1a-4dfe-92a3-104742df97c1",
+      "name": "Split Out - CareerOne",
+      "credentials": {
+        "apifyApi": {
+          "id": "SASWNsykfiGCTkE0",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "Datasets",
+        "datasetId": "={{ $json.defaultDatasetId }}",
+        "offset": {},
+        "limit": 100,
+        "options": {}
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        960,
+        384
+      ],
+      "id": "9cd1be6f-f0ee-4998-8fa2-cbd3a0345fda",
+      "name": "Split Out - Jora",
+      "credentials": {
+        "apifyApi": {
+          "id": "SASWNsykfiGCTkE0",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "Datasets",
+        "datasetId": "={{ $json.defaultDatasetId }}",
+        "offset": {},
+        "limit": 100,
+        "options": {}
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        960,
+        576
+      ],
+      "id": "4c090018-c1b2-454c-b1a4-9634b5e16639",
+      "name": "Split Out - Indeed",
+      "credentials": {
+        "apifyApi": {
+          "id": "SASWNsykfiGCTkE0",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "results",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        960,
+        768
+      ],
+      "id": "f973bdc5-062b-48f5-afdd-a6173b8042a9",
+      "name": "Split Out - Adzuna"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cff084f9-ec7e-431f-ada4-5747dbe13190",
+              "name": "Title",
+              "value": "={{ $json.title.trim().toUpperCase() }}",
+              "type": "string"
+            },
+            {
+              "id": "305ced74-f3f0-4558-8275-2dd89c137adb",
+              "name": "Company",
+              "value": "={{ $json.company.trim().toUpperCase() }}",
+              "type": "string"
+            },
+            {
+              "id": "a26395a3-aea8-4fb9-8131-c27a5c50237b",
+              "name": "Description",
+              "value": "={{ $json.description }}",
+              "type": "string"
+            },
+            {
+              "id": "f7db54b7-3ffd-4da7-b970-fd42bf7e8188",
+              "name": "Link",
+              "value": "={{ $json.applyUrl }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1184,
+        0
+      ],
+      "id": "e0ab8140-a787-4440-aff7-05a632489c81",
+      "name": "Edit Fields - Seek"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9576253d-3707-4661-9477-e3eb27fc8ff5",
+              "name": "Title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "ef7d2c1b-1d13-4d41-bed7-6bf42e577f48",
+              "name": "Company",
+              "value": "={{ $json.company.display_name }}",
+              "type": "string"
+            },
+            {
+              "id": "718a0bbe-ba50-4267-960a-20fd4f333dc4",
+              "name": "Description",
+              "value": "={{ $json.description }}",
+              "type": "string"
+            },
+            {
+              "id": "6d6d16aa-7a93-46d7-bd9e-7b46f4f44db2",
+              "name": "Link",
+              "value": "={{ $json.redirect_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1184,
+        768
+      ],
+      "id": "3acfcb0c-77df-4e2e-b242-07cbeb413caf",
+      "name": "Edit Fields - Adzuna"
+    },
+    {
+      "parameters": {
+        "numberInputs": 5
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1408,
+        336
+      ],
+      "id": "630467d1-735a-4ba4-a66a-36cd9cfa1836",
+      "name": "Merge Jobs"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ce319f97-ce50-40d9-a265-68824c69ac24",
+              "leftValue": "={{ $json.Title.toLowerCase() }}",
+              "rightValue": "={{ $('Loop over Keywords').item.json.keyword.toLowerCase() }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "e61b1973-05cc-47b1-8efb-c0a9695582e5",
+              "leftValue": "={{ $json.Description.toLowerCase() }}",
+              "rightValue": "={{ $('Loop over Keywords').item.json.keyword.toLowerCase() }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1632,
+        384
+      ],
+      "id": "33e0030c-38fd-408e-bade-46144d19f12b",
+      "name": "Filter Relevant Jobs"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "330bbb40-2aad-483c-87ac-91b444ebd239",
+              "name": "Title",
+              "value": "={{ $('Remove Duplicates').item.json.Title }}",
+              "type": "string"
+            },
+            {
+              "id": "720f97ed-ac08-473e-957e-b48555e5159d",
+              "name": "Company",
+              "value": "={{ $('Remove Duplicates').item.json.Company }}",
+              "type": "string"
+            },
+            {
+              "id": "3b7325e7-22f8-48e3-be2d-9851648ac8b0",
+              "name": "Description",
+              "value": "={{ $('Remove Duplicates').item.json.Description }}",
+              "type": "string"
+            },
+            {
+              "id": "72c05c00-9202-49ba-a290-d823f965e94f",
+              "name": "Link",
+              "value": "={{ $('Remove Duplicates').item.json.Link }}",
+              "type": "string"
+            },
+            {
+              "id": "17b0b828-3074-41e0-bba3-661e13997e05",
+              "name": "Score",
+              "value": "={{ $json.score }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3104,
+        384
+      ],
+      "id": "501f4159-f8b9-485a-9a26-f9eff0f37f83",
+      "name": "Edit Fields - Final"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        3328,
+        784
+      ],
+      "id": "3a80080e-1e44-47a1-8f10-2975dae79d4b",
+      "name": "Upload to Google Sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "VVqInoJGey2NtOpe",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Scrape Jobs - SEEK": {
+      "main": [
+        [
+          {
+            "node": "Split Out - SEEK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scrape Jobs - CareerOne": {
+      "main": [
+        [
+          {
+            "node": "Split Out - CareerOne",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scrape Jobs - Jora": {
+      "main": [
+        [
+          {
+            "node": "Split Out - Jora",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scrape Jobs - Indeed": {
+      "main": [
+        [
+          {
+            "node": "Split Out - Indeed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Input Keywords",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields - CareerOne": {
+      "main": [
+        [
+          {
+            "node": "Merge Jobs",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields - Jora": {
+      "main": [
+        [
+          {
+            "node": "Merge Jobs",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Edit Fields - Indeed": {
+      "main": [
+        [
+          {
+            "node": "Merge Jobs",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Remove In-Batch Duplicates": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Read Jobs in Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Duplicates": {
+      "main": [
+        [
+          {
+            "node": "Score Jobs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Score Jobs": {
+      "main": [
+        [
+          {
+            "node": "Parse Scores",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Scores": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - Final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Jobs in Google Sheet": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Request - Adzuna": {
+      "main": [
+        [
+          {
+            "node": "Split Out - Adzuna",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Input Keywords": {
+      "main": [
+        [
+          {
+            "node": "Loop over Keywords",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop over Keywords": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Scrape Jobs - SEEK",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Scrape Jobs - CareerOne",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Scrape Jobs - Jora",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Scrape Jobs - Indeed",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request - Adzuna",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out - SEEK": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - Seek",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out - CareerOne": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - CareerOne",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out - Jora": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - Jora",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out - Indeed": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - Indeed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out - Adzuna": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields - Adzuna",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields - Seek": {
+      "main": [
+        [
+          {
+            "node": "Merge Jobs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields - Adzuna": {
+      "main": [
+        [
+          {
+            "node": "Merge Jobs",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Merge Jobs": {
+      "main": [
+        [
+          {
+            "node": "Filter Relevant Jobs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Relevant Jobs": {
+      "main": [
+        [
+          {
+            "node": "Remove In-Batch Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields - Final": {
+      "main": [
+        [
+          {
+            "node": "Upload to Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to Google Sheet": {
+      "main": [
+        [
+          {
+            "node": "Loop over Keywords",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "7b0296de-f3c0-4bb8-a74c-29451909ccec",
+  "meta": {
+    "instanceId": "03b78c97415423a2d3ebf534b9f5aeac13725f293c13e3f27f0aecf75f1b8e95"
+  },
+  "nodeGroups": [],
+  "id": "E46LY7iGAMsiTGbe",
+  "tags": []
+}
